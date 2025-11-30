@@ -6,13 +6,13 @@ import Header from '../Header'
 import './index.css'
 
 const Products = () => (
-  <>
+  <div className="products-page-layout">
     <Header />
     <div className="product-sections">
       <PrimeDealsSection />
       <AllProductsSection />
     </div>
-  </>
+  </div>
 )
 
 export default Products

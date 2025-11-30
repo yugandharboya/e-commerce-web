@@ -43,8 +43,10 @@ class ProductItemDetails extends Component {
 
   getProductData = async () => {
     const {match} = this.props
-    const {params} = match
-    const {id} = params
+    console.log("match",match)
+    const {id} = match.params
+    // const {id} = params
+    console.log("id",id)
 
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
@@ -219,12 +221,12 @@ class ProductItemDetails extends Component {
 
   render() {
     return (
-      <>
+      <div className="product-details-page-layout">
         <Header />
         <div className="product-item-details-container">
           {this.renderProductDetails()}
         </div>
-      </>
+      </div>
     )
   }
 }

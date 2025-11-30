@@ -8,7 +8,9 @@ import ProductItemDetails from './components/ProductItemDetails'
 import Cart from './components/Cart'
 import NotFound from './components/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
-import CartContext from './context/CartContext'
+import CartContext from './context/CartContext' 
+import ProductItemDetailsWrapper from './components/productItemDetailsWrapper'
+
 
 import './App.css'
 
@@ -40,47 +42,25 @@ class App extends Component {
           }}
         >
           <Routes>
-            {/* Public Route */}
+          
             <Route path="/login" element={<LoginForm />} />
-
-            {/* Protected Routes */}
+            <Route path="/" element={<ProtectedRoute> <Home /> </ProtectedRoute> } />
+            <Route path="/products" element={  <ProtectedRoute>  <Products /> </ProtectedRoute>}   />
+            {/* <Route path="/products/:id"  element={ <ProtectedRoute>  <ProductItemDetails /> </ProtectedRoute>}  /> */}
             <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <Home />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/products"
-              element={
-                <ProtectedRoute>
-                  <Products />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/products/:id"
-              element={
-                <ProtectedRoute>
-                  <ProductItemDetails />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/cart"
-              element={
-                <ProtectedRoute>
-                  <Cart />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* Not Found */}
+  path="/products/:id"
+  element={
+    <ProtectedRoute>
+      <ProductItemDetailsWrapper />
+    </ProtectedRoute>
+  }
+/>
+            <Route  path="/cart"  element={  <ProtectedRoute>  <Cart />   </ProtectedRoute> } />
             <Route path="/not-found" element={<NotFound />} />
             <Route path="*" element={<Navigate to="/not-found" replace />} />
+          
           </Routes>
+
         </CartContext.Provider>
       </BrowserRouter>
     )

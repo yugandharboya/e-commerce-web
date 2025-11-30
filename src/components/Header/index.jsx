@@ -1,18 +1,20 @@
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
-import './index.css'
+import "./index.css";
 
-const Header = props => {
+const Header = () => {
+  const navigate = useNavigate();
   const onClickLogout = () => {
-    const {history} = props
-    Cookies.remove('jwt_token')
-    history.replace('/login')
-  }
+    console.log("Logout clicked");
+
+    Cookies.remove("jwt_token");
+    navigate("/login", { replace: true });
+  };
 
   return (
-    <nav className="nav-header">
+    <nav className="header-container">
       <div className="nav-content">
         <div className="nav-bar-mobile-logo-container">
           <Link to="/">
@@ -102,7 +104,7 @@ const Header = props => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default (Header)
+export default Header;

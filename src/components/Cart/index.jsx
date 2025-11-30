@@ -10,7 +10,7 @@ const Cart = () => (
       const {cartList} = value
       const showEmptyView = cartList.length === 0
       return (
-        <>
+        <div className="cart-page-layout">
           <Header />
           {showEmptyView ? (
             <EmptyCartView />
@@ -22,7 +22,7 @@ const Cart = () => (
               </div>
             </div>
           )}
-        </>
+        </div>
       )
     }}
   </CartContext.Consumer>
